@@ -1,0 +1,20 @@
+version: "3"
+
+services:
+  my_blog_postgresql:
+    image: postgres:latest
+    container_name: my_blog_postgresql
+    volumes:
+      - my_blog_postgresql:/var/lib/postgresql/data
+    restart: always
+    env_file: .env
+    ports:
+      - "5432:5432"
+    networks:
+      - my_blog_network
+volumes:
+  my_blog_postgresql:
+    external: true
+networks:
+  my_blog_network:
+    external: true
